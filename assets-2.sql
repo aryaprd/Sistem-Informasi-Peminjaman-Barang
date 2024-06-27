@@ -6,10 +6,7 @@
 -- Waktu pembuatan: 26 Jun 2024 pada 17.31
 -- Versi server: 10.4.28-MariaDB
 -- Versi PHP: 8.1.17
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO"; START TRANSACTION; SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -26,18 +23,17 @@ SET time_zone = "+00:00";
 --
 -- Struktur dari tabel `assets`
 --
-
 CREATE TABLE `assets` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `barcode` varchar(255) NOT NULL,
-  `jenis_barang` varchar(255) NOT NULL,
-  `barang` varchar(255) NOT NULL,
-  `harga` varchar(255) NOT NULL,
-  `pic` varchar(255) NOT NULL,
-  `nik_pic` varchar(255) NOT NULL,
-  `jumlah` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `id` BIGINT(20) UNSIGNED NOT NULL,
+ `barcode` VARCHAR(255) NOT NULL,
+ `jenis_barang` VARCHAR(255) NOT NULL,
+ `barang` VARCHAR(255) NOT NULL,
+ `harga` VARCHAR(255) NOT NULL,
+ `pic` VARCHAR(255) NOT NULL,
+ `nik_pic` VARCHAR(255) NOT NULL,
+ `jumlah` VARCHAR(255) NOT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -45,28 +41,26 @@ CREATE TABLE `assets` (
 --
 -- Struktur dari tabel `barangs`
 --
-
 CREATE TABLE `barangs` (
-  `id_barang` int(10) UNSIGNED NOT NULL,
-  `id_jb` bigint(20) UNSIGNED NOT NULL,
-  `id_pic` bigint(20) UNSIGNED NOT NULL,
-  `barcode` varchar(255) NOT NULL,
-  `barang` varchar(255) NOT NULL,
-  `harga` varchar(255) NOT NULL,
-  `jumlah` varchar(255) DEFAULT NULL,
-  `quantity` varchar(255) NOT NULL,
-  `sisa` int(11) DEFAULT NULL,
-  `tersedia` varchar(255) DEFAULT NULL,
-  `terpinjam` varchar(255) DEFAULT NULL,
-  `jenis_barang` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `id_barang` INT(10) UNSIGNED NOT NULL,
+ `id_jb` BIGINT(20) UNSIGNED NOT NULL,
+ `id_pic` BIGINT(20) UNSIGNED NOT NULL,
+ `barcode` VARCHAR(255) NOT NULL,
+ `barang` VARCHAR(255) NOT NULL,
+ `harga` VARCHAR(255) NOT NULL,
+ `jumlah` VARCHAR(255) DEFAULT NULL,
+ `quantity` VARCHAR(255) NOT NULL,
+ `sisa` INT(11) DEFAULT NULL,
+ `tersedia` VARCHAR(255) DEFAULT NULL,
+ `terpinjam` VARCHAR(255) DEFAULT NULL,
+ `jenis_barang` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `barangs`
 --
-
 INSERT INTO `barangs` (`id_barang`, `id_jb`, `id_pic`, `barcode`, `barang`, `harga`, `jumlah`, `quantity`, `sisa`, `tersedia`, `terpinjam`, `jenis_barang`, `created_at`, `updated_at`) VALUES
 (1, 3, 86, '29949559', 'Sekrup', '9.860.787', '1', '', 1, '1', '0', '3', '2024-05-12 08:42:07', '2024-06-26 05:58:35'),
 (2, 4, 40, '58551153', 'Tangga', '5.354.758', '2', '', 2, '2', '0', NULL, '2024-05-12 08:42:07', '2024-06-05 19:52:48'),
@@ -115,15 +109,14 @@ INSERT INTO `barangs` (`id_barang`, `id_jb`, `id_pic`, `barcode`, `barang`, `har
 --
 -- Struktur dari tabel `failed_jobs`
 --
-
 CREATE TABLE `failed_jobs` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `uuid` varchar(255) NOT NULL,
-  `connection` text NOT NULL,
-  `queue` text NOT NULL,
-  `payload` longtext NOT NULL,
-  `exception` longtext NOT NULL,
-  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+ `id` BIGINT(20) UNSIGNED NOT NULL,
+ `uuid` VARCHAR(255) NOT NULL,
+ `connection` TEXT NOT NULL,
+ `queue` TEXT NOT NULL,
+ `payload` LONGTEXT NOT NULL,
+ `exception` LONGTEXT NOT NULL,
+ `failed_at` TIMESTAMP NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -131,12 +124,11 @@ CREATE TABLE `failed_jobs` (
 --
 -- Struktur dari tabel `groups`
 --
-
 CREATE TABLE `groups` (
-  `group_id` int(10) UNSIGNED NOT NULL,
-  `group_name` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `group_id` INT(10) UNSIGNED NOT NULL,
+ `group_name` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -144,14 +136,13 @@ CREATE TABLE `groups` (
 --
 -- Struktur dari tabel `group_pages`
 --
-
 CREATE TABLE `group_pages` (
-  `gp_id` int(10) UNSIGNED NOT NULL,
-  `group_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `page_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `access` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `gp_id` INT(10) UNSIGNED NOT NULL,
+ `group_id` BIGINT(20) UNSIGNED DEFAULT NULL,
+ `page_id` BIGINT(20) UNSIGNED DEFAULT NULL,
+ `access` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -159,18 +150,16 @@ CREATE TABLE `group_pages` (
 --
 -- Struktur dari tabel `jenis_barang`
 --
-
 CREATE TABLE `jenis_barang` (
-  `id_jb` int(10) UNSIGNED NOT NULL,
-  `jenis_barang` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `id_jb` INT(10) UNSIGNED NOT NULL,
+ `jenis_barang` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `jenis_barang`
 --
-
 INSERT INTO `jenis_barang` (`id_jb`, `jenis_barang`, `created_at`, `updated_at`) VALUES
 (1, 'Elektronik & Komputer', '2024-05-12 08:42:07', '2024-05-12 08:42:07'),
 (2, 'Perlengkapan Kantor', '2024-05-12 08:42:07', '2024-05-12 08:42:07'),
@@ -183,17 +172,15 @@ INSERT INTO `jenis_barang` (`id_jb`, `jenis_barang`, `created_at`, `updated_at`)
 --
 -- Struktur dari tabel `migrations`
 --
-
 CREATE TABLE `migrations` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `migration` varchar(255) NOT NULL,
-  `batch` int(11) NOT NULL
+ `id` INT(10) UNSIGNED NOT NULL,
+ `migration` VARCHAR(255) NOT NULL,
+ `batch` INT(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `migrations`
 --
-
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_reset_tokens_table', 1),
@@ -218,13 +205,12 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 -- Struktur dari tabel `pages`
 --
-
 CREATE TABLE `pages` (
-  `page_id` int(10) UNSIGNED NOT NULL,
-  `page_name` text DEFAULT NULL,
-  `action` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `page_id` INT(10) UNSIGNED NOT NULL,
+ `page_name` TEXT DEFAULT NULL,
+ `action` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -232,11 +218,10 @@ CREATE TABLE `pages` (
 --
 -- Struktur dari tabel `password_reset_tokens`
 --
-
 CREATE TABLE `password_reset_tokens` (
-  `email` varchar(255) NOT NULL,
-  `token` varchar(255) NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL
+ `email` VARCHAR(255) NOT NULL,
+ `token` VARCHAR(255) NOT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -244,29 +229,27 @@ CREATE TABLE `password_reset_tokens` (
 --
 -- Struktur dari tabel `peminjamans`
 --
-
 CREATE TABLE `peminjamans` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `id_barang` bigint(20) UNSIGNED NOT NULL,
-  `id_user` bigint(20) UNSIGNED NOT NULL,
-  `id_pic` bigint(20) UNSIGNED NOT NULL,
-  `qty_barang` varchar(255) NOT NULL,
-  `image` varchar(255) DEFAULT NULL,
-  `image_new` varchar(255) DEFAULT NULL,
-  `sisa_barang` varchar(255) NOT NULL,
-  `mark` varchar(255) NOT NULL,
-  `tgl_pinjam` datetime DEFAULT NULL,
-  `tgl_kembali` datetime DEFAULT NULL,
-  `tgl_kembali_real` varchar(255) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `status` enum('menunggu','diterima','ditolak','selesai','telat') NOT NULL DEFAULT 'menunggu'
+ `id` BIGINT(20) UNSIGNED NOT NULL,
+ `id_barang` BIGINT(20) UNSIGNED NOT NULL,
+ `id_user` BIGINT(20) UNSIGNED NOT NULL,
+ `id_pic` BIGINT(20) UNSIGNED NOT NULL,
+ `qty_barang` VARCHAR(255) NOT NULL,
+ `image` VARCHAR(255) DEFAULT NULL,
+ `image_new` VARCHAR(255) DEFAULT NULL,
+ `sisa_barang` VARCHAR(255) NOT NULL,
+ `mark` VARCHAR(255) NOT NULL,
+ `tgl_pinjam` DATETIME DEFAULT NULL,
+ `tgl_kembali` DATETIME DEFAULT NULL,
+ `tgl_kembali_real` VARCHAR(255) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL,
+ `status` ENUM('menunggu','diterima','ditolak','selesai','telat') NOT NULL DEFAULT 'menunggu'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `peminjamans`
 --
-
 INSERT INTO `peminjamans` (`id`, `id_barang`, `id_user`, `id_pic`, `qty_barang`, `image`, `image_new`, `sisa_barang`, `mark`, `tgl_pinjam`, `tgl_kembali`, `tgl_kembali_real`, `created_at`, `updated_at`, `status`) VALUES
 (22, 23, 2, 97, '1', '', NULL, '', '1', '2024-06-26 14:11:14', '2024-06-27 00:00:00', '2024-06-26 14:12:26', '2024-06-26 06:11:14', '2024-06-26 06:12:26', 'selesai'),
 (23, 23, 2, 97, '1', '', NULL, '', 'ty', '2024-06-26 14:20:37', '2024-06-27 00:00:00', '2024-06-26 14:21:26', '2024-06-26 06:20:37', '2024-06-26 06:21:26', 'selesai'),
@@ -278,18 +261,17 @@ INSERT INTO `peminjamans` (`id`, `id_barang`, `id_user`, `id_pic`, `qty_barang`,
 --
 -- Struktur dari tabel `personal_access_tokens`
 --
-
 CREATE TABLE `personal_access_tokens` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) NOT NULL,
-  `tokenable_id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `token` varchar(64) NOT NULL,
-  `abilities` text DEFAULT NULL,
-  `last_used_at` timestamp NULL DEFAULT NULL,
-  `expires_at` timestamp NULL DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+ `id` BIGINT(20) UNSIGNED NOT NULL,
+ `tokenable_type` VARCHAR(255) NOT NULL,
+ `tokenable_id` BIGINT(20) UNSIGNED NOT NULL,
+ `name` VARCHAR(255) NOT NULL,
+ `token` VARCHAR(64) NOT NULL,
+ `abilities` TEXT DEFAULT NULL,
+ `last_used_at` TIMESTAMP NULL DEFAULT NULL,
+ `expires_at` TIMESTAMP NULL DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -297,25 +279,23 @@ CREATE TABLE `personal_access_tokens` (
 --
 -- Struktur dari tabel `users`
 --
-
 CREATE TABLE `users` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) NOT NULL,
-  `group_id` varchar(255) DEFAULT NULL,
-  `nik_pic` varchar(255) NOT NULL,
-  `remember_token` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `is_admin` enum('admin','pic','user') NOT NULL DEFAULT 'user'
+ `id` BIGINT(20) UNSIGNED NOT NULL,
+ `name` VARCHAR(255) NOT NULL,
+ `email` VARCHAR(255) NOT NULL,
+ `email_verified_at` TIMESTAMP NULL DEFAULT NULL,
+ `password` VARCHAR(255) NOT NULL,
+ `group_id` VARCHAR(255) DEFAULT NULL,
+ `nik_pic` VARCHAR(255) NOT NULL,
+ `remember_token` VARCHAR(100) DEFAULT NULL,
+ `created_at` TIMESTAMP NULL DEFAULT NULL,
+ `updated_at` TIMESTAMP NULL DEFAULT NULL,
+ `is_admin` ENUM('admin','pic','user') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
-
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `group_id`, `nik_pic`, `remember_token`, `created_at`, `updated_at`, `is_admin`) VALUES
 (1, 'Admin', 'admin@id', NULL, '$2y$10$QOkG8reVFfV3A6c93TOQ1uzMI30fR1/MMneul4gZHGoj0vKLSOxPG', '1', '12345678', NULL, '2024-05-12 08:42:06', '2024-05-12 08:42:06', 'admin'),
 (2, 'ayu', 'ayu@id', NULL, '$2y$10$UYMRZe9uSgqACWEF5ouAS.cOv0JVrNfddAUOLEbMY84B.7sdgUw6e', '1', '12345678', NULL, '2024-05-12 08:42:06', '2024-05-12 08:42:06', 'user'),
@@ -527,78 +507,62 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `gr
 --
 -- Indeks untuk tabel `assets`
 --
-ALTER TABLE `assets`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `assets` ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `barangs`
 --
-ALTER TABLE `barangs`
-  ADD PRIMARY KEY (`id_barang`),
-  ADD UNIQUE KEY `barangs_barcode_unique` (`barcode`);
+ALTER TABLE `barangs` ADD PRIMARY KEY (`id_barang`), ADD UNIQUE KEY `barangs_barcode_unique` (`barcode`);
 
 --
 -- Indeks untuk tabel `failed_jobs`
 --
-ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+ALTER TABLE `failed_jobs` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indeks untuk tabel `groups`
 --
-ALTER TABLE `groups`
-  ADD PRIMARY KEY (`group_id`);
+ALTER TABLE `groups` ADD PRIMARY KEY (`group_id`);
 
 --
 -- Indeks untuk tabel `group_pages`
 --
-ALTER TABLE `group_pages`
-  ADD PRIMARY KEY (`gp_id`);
+ALTER TABLE `group_pages` ADD PRIMARY KEY (`gp_id`);
 
 --
 -- Indeks untuk tabel `jenis_barang`
 --
-ALTER TABLE `jenis_barang`
-  ADD PRIMARY KEY (`id_jb`);
+ALTER TABLE `jenis_barang` ADD PRIMARY KEY (`id_jb`);
 
 --
 -- Indeks untuk tabel `migrations`
 --
-ALTER TABLE `migrations`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `migrations` ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `pages`
 --
-ALTER TABLE `pages`
-  ADD PRIMARY KEY (`page_id`);
+ALTER TABLE `pages` ADD PRIMARY KEY (`page_id`);
 
 --
 -- Indeks untuk tabel `password_reset_tokens`
 --
-ALTER TABLE `password_reset_tokens`
-  ADD PRIMARY KEY (`email`);
+ALTER TABLE `password_reset_tokens` ADD PRIMARY KEY (`email`);
 
 --
 -- Indeks untuk tabel `peminjamans`
 --
-ALTER TABLE `peminjamans`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `peminjamans` ADD PRIMARY KEY (`id`);
 
 --
 -- Indeks untuk tabel `personal_access_tokens`
 --
-ALTER TABLE `personal_access_tokens`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
-  ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
+ALTER TABLE `personal_access_tokens` ADD PRIMARY KEY (`id`), ADD UNIQUE KEY `personal_access_tokens_token_unique` (`token`), ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
 -- Indeks untuk tabel `users`
 --
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `users` ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT untuk tabel yang dibuang
@@ -607,69 +571,57 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT untuk tabel `assets`
 --
-ALTER TABLE `assets`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `assets` MODIFY `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `barangs`
 --
-ALTER TABLE `barangs`
-  MODIFY `id_barang` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+ALTER TABLE `barangs` MODIFY `id_barang` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT untuk tabel `failed_jobs`
 --
-ALTER TABLE `failed_jobs`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `failed_jobs` MODIFY `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `groups`
 --
-ALTER TABLE `groups`
-  MODIFY `group_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `groups` MODIFY `group_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `group_pages`
 --
-ALTER TABLE `group_pages`
-  MODIFY `gp_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `group_pages` MODIFY `gp_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `jenis_barang`
 --
-ALTER TABLE `jenis_barang`
-  MODIFY `id_jb` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+ALTER TABLE `jenis_barang` MODIFY `id_jb` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
 --
-ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `migrations` MODIFY `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `pages`
 --
-ALTER TABLE `pages`
-  MODIFY `page_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `pages` MODIFY `page_id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `peminjamans`
 --
-ALTER TABLE `peminjamans`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+ALTER TABLE `peminjamans` MODIFY `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT untuk tabel `personal_access_tokens`
 --
-ALTER TABLE `personal_access_tokens`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+ALTER TABLE `personal_access_tokens` MODIFY `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203;
-COMMIT;
+ALTER TABLE `users` MODIFY `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=203; COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

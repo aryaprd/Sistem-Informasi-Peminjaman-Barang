@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 
+use DateTime;
 use App\Models\User;
 use App\Models\Barang;
 use App\Models\Peminjaman;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-use DateTime;
 
 
 class PinjamController extends Controller
@@ -47,23 +47,29 @@ class PinjamController extends Controller
         $pinjam = Peminjaman::findOrFail($id);
         $barang = Barang::where('id_barang', $pinjam->id_barang)->first();
         // dd($barang);
-
+        $pinjam->qty_barang -= $request->qty_barangg;
 
         if ($pinjam->status === 'diterima') {
 
             $tgl_kembali = new DateTime($pinjam->tgl_kembali);
             $tgl_kembali_real = new DateTime($request->datee);
 
-            if ($tgl_kembali_real > $tgl_kembali) {
-                $pinjam->status = 'telat';
+            if ($pinjam->qty_barang > 0) {
+                $pinjam->status = 'diterima';
             } else {
-                $pinjam->status = 'selesai';
+                if ($tgl_kembali_real > $tgl_kembali) {
+                    $pinjam->status = 'telat';
+                } else {
+                    $pinjam->status = 'selesai';
+                }
             }
 
-            $pinjam->tgl_kembali_real =  \Carbon\Carbon::now(); //$request->datee;
+
+
+            $pinjam->tgl_kembali_real =  Carbon::now(); //$request->datee;
             $pinjam->mark = $request->message;
             // $request->qty_barangg;
-            $pinjam->qty_barang = $request->qty_barangg;
+
 
             if ($request->hasFile('image_new')) {
                 $image_new = $request->file('image_new')->store('pinjam');
@@ -186,7 +192,7 @@ class PinjamController extends Controller
                 'id_pic' => $id_pic,
                 'id_barang'   => $request->input('barang'),
                 'qty_barang'   => $request->input('jumlah'),
-                'tgl_pinjam' => \Carbon\Carbon::now(),
+                'tgl_pinjam' => Carbon::now(),
                 'tgl_kembali' => $request->input('kembali'),
                 'status' => 'menunggu', // 'menunggu'
                 'sisa_barang' => $sisa_barang,
