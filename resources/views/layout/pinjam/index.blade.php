@@ -97,6 +97,7 @@
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 } */
     </style> --}}
 
+
     <div class="page-inner">
         <div class="page-title">
             <h3 class="breadcrumb-header">Pinjam </h3>
@@ -224,19 +225,20 @@
                                     </label>
 
                                     <input type="date" class="form-control" name="kembali" id="kembali"
-                                        placeholder="Tanggal Kembali" required value="{{ old('kembali') }}">
+                                        placeholder="Tanggal Kembali" required value="<?= date('Y-m-d') ?>"
+                                        min="<?= date('Y-m-d') ?>">
                                     @error('kembali')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
                                     @enderror
 
+
                                 </div>
-                            </div>
 
 
-                            {{-- </div> --}}
-                            {{-- <div class="form-group mb-3">
+                                {{-- </div> --}}
+                                {{-- <div class="form-group mb-3">
                                         <div class="custom-file">
                                             <label class="custom-file-label" for="inputGroupFile02"></label>
                                             <img class="img-preview  img-fluid mb-5 col-sm-5" id="img-preview">
@@ -250,24 +252,24 @@
                                         </div>
                                     </div> --}}
 
-                            <div class="form-group
-                                               mt-1">
-                                <div class="custom-file col-sm-1 control-label me-5 ms-5">
-                                    <div class="col-sm-10">
-                                        <label class="custom-file-label" for="inputGroupFile02"></label>
-                                        {{-- <img class="img-preview img-fluid mb-5 col-sm-1" id="img-preview"> --}}
-                                        <br><br>
-                                        <input type="file" class="form" id="image" name="image"
-                                            onchange="previewImage()">
-                                        @error('image')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                <div class="form-group
+                                mt-1">
+                                    <div class="custom-file col-sm-1 control-label me-5 ms-5">
+                                        <div class="col-sm-10">
+                                            <label class="custom-file-label" for="inputGroupFile02"></label>
+                                            {{-- <img class="img-preview img-fluid mb-5 col-sm-1" id="img-preview"> --}}
+                                            <br><br>
+                                            <input type="file" class="form" id="image" name="image"
+                                                onchange="previewImage()">
+                                            @error('image')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- <div class="form-group">
+                                {{-- <div class="form-group">
                                         <label for="image" class="form-label">Gambar</label>
                                         <img class="img-preview img-fluid mb-3 col-sm-5" id="img-preview">
                                         <input type="file" class="form-control @error('image') is-invalid @enderror"
@@ -279,196 +281,197 @@
                                         @enderror
                                     </div> --}}
 
-                            <div class="justify-content-beetwen ms-5 justify-content-center">
-                                <div class="form-group12 me-5 mt-5">
-                                    <a href="{{ route('user.index') }}" class="btn btn-info">Back</a>
-                                    <button type="submit" class="btn btn-primary ms-3">Ajukan </button>
+                                <div class="justify-content-beetwen ms-5 justify-content-center">
+                                    <div class="form-group12 me-5 mt-5">
+                                        <a href="{{ route('user.index') }}" class="btn btn-info">Back</a>
+                                        <button type="submit" class="btn btn-primary ms-3">Ajukan </button>
+                                    </div>
                                 </div>
+                                {{-- </div> --}}
                             </div>
-                            {{-- </div> --}}
                         </div>
-                </div>
-                </form>
+                    </form>
 
 
-                {{-- TABLE --}}
+                    {{-- TABLE --}}
 
-                <div class="panel-body mb-auto mt-5">
-                    @if (count($peminjaman) > 0)
-                        <div class="table-responsive mt-10">
-                            {{-- <table id="example" class="table table-bordered table-sm mb-3 "> --}}
-                            <table id="example" class="display table" style="width: 100%; cellpacing: 0;">
-                                <thead>
-                                    <tr>
-                                        <th style="text-align: center;">No</th>
-                                        <th style="text-align: center;">Barcode</th>
-                                        <th style="text-align: center;" width="90">Barang</th>
-                                        <th style="text-align: center;">Peminjam</th>
-                                        {{-- <th style="text-align: center;">Pic</th> --}}
+                    <div class="panel-body mb-auto mt-5">
+                        @if (count($peminjaman) > 0)
+                            <div class="table-responsive mt-10">
+                                {{-- <table id="example" class="table table-bordered table-sm mb-3 "> --}}
+                                <table id="example" class="display table" style="width: 100%; cellpacing: 0;">
+                                    <thead>
+                                        <tr>
+                                            <th style="text-align: center;">No</th>
+                                            <th style="text-align: center;">Barcode</th>
+                                            <th style="text-align: center;" width="90">Barang</th>
+                                            <th style="text-align: center;">Peminjam</th>
+                                            {{-- <th style="text-align: center;">Pic</th> --}}
 
-                                        <th style="text-align: center;">Jumlah
+                                            <th style="text-align: center;">Jumlah
 
-                                        </th>
-                                        {{-- <th style="text-align: center;">Sisa</th> --}}
-                                        <th style="text-align: center;">Tgl Pinjam</th>
-                                        <th style="text-align: center;">Tgl Kembali</th>
-                                        <th style="text-align: center;">Gambar</th>
-                                        <th style="text-align: center;"width="20">Status</th>
-                                        {{-- @foreach ($peminjaman as $p) --}}
-                                        {{-- @if ($p->status == 'diterima') --}}
-                                        <th style="text-align: center;"width="90">Action</th>
-                                        {{-- @break
+                                            </th>
+                                            {{-- <th style="text-align: center;">Sisa</th> --}}
+                                            <th style="text-align: center;">Tgl Pinjam</th>
+                                            <th style="text-align: center;">Tgl Kembali</th>
+                                            <th style="text-align: center;">Gambar</th>
+                                            <th style="text-align: center;"width="20">Status</th>
+                                            {{-- @foreach ($peminjaman as $p) --}}
+                                            {{-- @if ($p->status == 'diterima') --}}
+                                            <th style="text-align: center;"width="90">Action</th>
+                                            {{-- @break
                                         @endif --}}
-                                        {{-- @endforeach --}}
-                                    </tr>
+                                            {{-- @endforeach --}}
+                                        </tr>
 
 
-                                </thead>
-                    @endif
-                    <tbody>
-                        @php
-                            $count = 0;
-                        @endphp
+                                    </thead>
+                        @endif
+                        <tbody>
+                            @php
+                                $count = 0;
+                            @endphp
 
-                        @foreach ($peminjaman as $p)
-                            @if ($p->status != 'ditolak' && $p->status != 'selesai' && $p->status != 'telat')
-                                <tr>
-                                    @php
-                                        $count++;
-                                    @endphp
-                                    <th scope="row">{{ $count }}</th>
-                                    <td style="text-align: center; font-size:14 px;">{{ $p->barcode }}</td>
-                                    <td style="text-align: center; font-size:14 px;">{{ $p->barang }}</td>
+                            @foreach ($peminjaman as $p)
+                                @if ($p->status != 'ditolak' && $p->status != 'selesai' && $p->status != 'telat')
+                                    <tr>
+                                        @php
+                                            $count++;
+                                        @endphp
+                                        <th scope="row">{{ $count }}</th>
+                                        <td style="text-align: center; font-size:14 px;">{{ $p->barcode }}</td>
+                                        <td style="text-align: center; font-size:14 px;">{{ $p->barang }}</td>
 
-                                    <td style="text-align: center; font-size:14 px;">{{ $p->nama_peminjam }}</td>
-                                    {{-- <td style="text-align: center; font-size:14 px;">{{ $p->nama_pic }}</td> --}}
-                                    <td style="text-align: center; font-size:14 px;">{{ $p->qty_barang }}</td>
-                                    {{-- <td>{{ $p->jumlah }}</td> --}}
-                                    <td style="text-align: center; font-size:14 px;">
-                                        {{ \Carbon\Carbon::parse($p->tgl_pinjam)->isoFormat('D MMMM YYYY HH:ss') }}
-                                    </td>
-                                    <td style="text-align: center; font-size:14 px;">
-                                        {{ \Carbon\Carbon::parse($p->tgl_kembali)->isoFormat('D MMMM YYYY HH:ss') }}
-                                    </td>
-                                    {{-- <td>{{ $p->tgl_kembali }}</td> --}}
-                                    <td>
+                                        <td style="text-align: center; font-size:14 px;">{{ $p->nama_peminjam }}</td>
+                                        {{-- <td style="text-align: center; font-size:14 px;">{{ $p->nama_pic }}</td> --}}
+                                        <td style="text-align: center; font-size:14 px;">{{ $p->qty_barang }}</td>
+                                        {{-- <td>{{ $p->jumlah }}</td> --}}
+                                        <td style="text-align: center; font-size:14 px;">
+                                            {{ \Carbon\Carbon::parse($p->tgl_pinjam)->isoFormat('D MMMM YYYY HH:ss') }}
+                                        </td>
+                                        <td style="text-align: center; font-size:14 px;">
+                                            {{ \Carbon\Carbon::parse($p->tgl_kembali)->isoFormat('D MMMM YYYY HH:ss') }}
+                                        </td>
+                                        {{-- <td>{{ $p->tgl_kembali }}</td> --}}
+                                        <td>
 
-                                        {{-- <img src="{!! asset('storage/' . $il->img_name) !!}" class="width-100 round"> --}}
-                                        @if ($p->image != null || $p->image != '')
-                                            <img src="{{ asset('storage/pinjam/' . $p->image) }}"
-                                                class="rounded img-fluid img-rounded" style="height: 80px;">
-                                        @endif
-                                    </td>
-                                    <td style="text-align: center;">
-                                        @if ($p->status == 'diterima')
-                                            <div class="mt-4 text-center">
-                                                <button
-                                                    style="background-color: rgb(73, 87, 147); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
-                                                    class="btn-sm">Dipinjam</button>
-                                            </div>
-                                        @elseif ($p->status == 'telat')
-                                            <div class="mt-4 text-center">
-                                                <button
-                                                    style="background-color: rgb(236, 236, 25); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
-                                                    class="btn-sm">Terlambat</button>
-                                            </div>
-                                        @elseif ($p->status == 'menunggu')
-                                            <div class="mt-4 text-center">
-                                                <button
-                                                    style="background-color: #34b0e4; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
-                                                    class="btn-sm">Menunggu</button>
-                                            </div>
-                                        @elseif ($p->status == 'ditolak')
-                                            <div class="mt-4 text-center">
-                                                <button
-                                                    style="background-color: rgb(255, 64, 0); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; width: 60px; font-weight: bold;"
-                                                    class="btn-sm">Ditolak</button>
-                                            </div>
-                                        @elseif ($p->status == 'selesai')
-                                            <div class="mt-4 text-center">
-                                                <box-icon name='badge-check' size='lg' color='green'
-                                                    class="mt-4"></box-icon>
-                                            </div>
-                                        @endif
-                                    </td>
-
-                </div>
-
-                <td>
-                    @if ($p->status == 'diterima')
-                        <button type="button" class="btn btn-info btn-sm mt-4"
-                            style="padding: 5px 10px; border: none; border-radius: 5px; font-size: small;"
-                            data-toggle="modal" data-target="#myModal{{ $p->barcode }}">Kembalikan
-                            <i class=" icon-action-undo"></i></button>
-                </td>
-                @endif
-
-
-                <!-- Modal -->
-
-                <div class="modal fade" id="myModal{{ $p->barcode }}" tabindex="-1" role="dialog"
-                    aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <h3 class="modal-title" id="myModalLabel">Ajukan pengembalian
-                                </h3>
-
-
-
-                            </div>
-
-                            <div class="modal-body">
-                                <form class="form-horizontal " method="POST"
-                                    action="{{ route('pinjam.kembalikan', $p->id) }}" enctype="multipart/form-data">
-                                    @csrf
-                                    @method('put')
-
-                                    <div class="panel-body">
-                                        {{-- <div class="row"> --}}
-                                        {{-- <div class="col-md-10"> --}}
-                                        <div class="col-lg-8 form-group" style="margin-top: 6px;">
-                                            {{-- <div class="control-group">
-                                            <div class="controls"> --}}
-                                            <label for="message" class="form-label"> <label for="jumlah"
-                                                    class="form-label">
-                                                    <h4 class="no-m m-b-sm">Message</h4>
-                                                </label></label>
-                                            <textarea class="input-large form-control" id="message" name="message" @error('message') is-invalid @enderror
-                                                required rows="3" placeholder="Enter a message ..."></textarea>
-                                            @error('message')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
+                                            {{-- <img src="{!! asset('storage/' . $il->img_name) !!}" class="width-100 round"> --}}
+                                            @if ($p->image != null || $p->image != '')
+                                                <img src="{{ asset('storage/pinjam/' . $p->image) }}"
+                                                    class="rounded img-fluid img-rounded" style="height: 80px;">
+                                            @endif
+                                        </td>
+                                        <td style="text-align: center;">
+                                            @if ($p->status == 'diterima')
+                                                <div class="mt-4 text-center">
+                                                    <button
+                                                        style="background-color: rgb(73, 87, 147); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
+                                                        class="btn-sm">Dipinjam</button>
                                                 </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-8 form-group" style="margin-top: 6px;">
-                                            <label for="message" class="form-label"> <label for="jumlah"
-                                                    class="form-label">
-                                                    <h4 class="no-m m-b-sm">Jumlah Kembali</h4>
-                                                </label></label>
-                                            <select class="js-states form-control" tabindex="-1" tabindex="1"
-                                                style="display: none; width: 100%" id="qty_barangg" name="qty_barangg"
-                                                required>
-                                                <option value=""></option>
-                                                ($peminjaman as $p)
-                                                @php
-                                                    $reqkembali = (int) $p->qty_barang;
-                                                @endphp
-                                                @for ($i = 1; $i <= $reqkembali; $i++)
-                                                    @if ($i == $reqkembali)
-                                                        <option value="{{ $p->id }}" selected>{{ $i }}
-                                                        </option>
-                                                    @else
-                                                        <option>{{ $i }}</option>
-                                                    @endif
-                                                @endfor
-                                            </select>
-                                        </div>
+                                            @elseif ($p->status == 'telat')
+                                                <div class="mt-4 text-center">
+                                                    <button
+                                                        style="background-color: rgb(236, 236, 25); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
+                                                        class="btn-sm">Terlambat</button>
+                                                </div>
+                                            @elseif ($p->status == 'menunggu')
+                                                <div class="mt-4 text-center">
+                                                    <button
+                                                        style="background-color: #34b0e4; color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; font-weight: bold; width: 75px;"
+                                                        class="btn-sm">Menunggu</button>
+                                                </div>
+                                            @elseif ($p->status == 'ditolak')
+                                                <div class="mt-4 text-center">
+                                                    <button
+                                                        style="background-color: rgb(255, 64, 0); color: white; padding: 5px 10px; border: none; border-radius: 5px; font-size: small; width: 60px; font-weight: bold;"
+                                                        class="btn-sm">Ditolak</button>
+                                                </div>
+                                            @elseif ($p->status == 'selesai')
+                                                <div class="mt-4 text-center">
+                                                    <box-icon name='badge-check' size='lg' color='green'
+                                                        class="mt-4"></box-icon>
+                                                </div>
+                                            @endif
+                                        </td>
 
-                                        {{-- @php
+                    </div>
+
+                    <td>
+                        @if ($p->status == 'diterima')
+                            <button type="button" class="btn btn-info btn-sm mt-4"
+                                style="padding: 5px 10px; border: none; border-radius: 5px; font-size: small;"
+                                data-toggle="modal" data-target="#myModal{{ $p->barcode }}">Kembalikan
+                                <i class=" icon-action-undo"></i></button>
+                    </td>
+                    @endif
+
+
+                    <!-- Modal -->
+
+                    <div class="modal fade" id="myModal{{ $p->barcode }}" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h3 class="modal-title" id="myModalLabel">Ajukan pengembalian
+                                    </h3>
+
+
+
+                                </div>
+
+                                <div class="modal-body">
+                                    <form class="form-horizontal " method="POST"
+                                        action="{{ route('pinjam.kembalikan', $p->id) }}" enctype="multipart/form-data">
+                                        @csrf
+                                        @method('put')
+
+                                        <div class="panel-body">
+                                            {{-- <div class="row"> --}}
+                                            {{-- <div class="col-md-10"> --}}
+                                            <div class="col-lg-8 form-group" style="margin-top: 6px;">
+                                                {{-- <div class="control-group">
+                                            <div class="controls"> --}}
+                                                <label for="message" class="form-label"> <label for="jumlah"
+                                                        class="form-label">
+                                                        <h4 class="no-m m-b-sm">Message</h4>
+                                                    </label></label>
+                                                <textarea class="input-large form-control" id="message" name="message" @error('message') is-invalid @enderror
+                                                    required rows="3" placeholder="Enter a message ..."></textarea>
+                                                @error('message')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            <div class="col-lg-8 form-group" style="margin-top: 6px;">
+                                                <label for="message" class="form-label"> <label for="jumlah"
+                                                        class="form-label">
+                                                        <h4 class="no-m m-b-sm">Jumlah Kembali</h4>
+                                                    </label></label>
+                                                <select class="js-states form-control" tabindex="-1" tabindex="1"
+                                                    style="display: none; width: 100%" id="qty_barangg"
+                                                    name="qty_barangg" required>
+                                                    <option value=""></option>
+                                                    ($peminjaman as $p)
+                                                    @php
+                                                        $reqkembali = (int) $p->qty_barang;
+                                                    @endphp
+                                                    @for ($i = 1; $i <= $reqkembali; $i++)
+                                                        @if ($i == $reqkembali)
+                                                            <option value="{{ $p->id }}" selected>
+                                                                {{ $i }}
+                                                            </option>
+                                                        @else
+                                                            <option>{{ $i }}</option>
+                                                        @endif
+                                                    @endfor
+                                                </select>
+                                            </div>
+
+                                            {{-- @php
                                         $total_stock = (int) $b->jumlah;
                                         $qty_peminjaman = (int) \App\Models\Peminjaman::where(
                                             'id_barang',
@@ -483,7 +486,7 @@
                                         $barang->sisa = $sisa;
                                         $barang->save();
                                     @endphp --}}
-                                        {{-- <div class="col-lg-8 form-group" style="margin-top: 6px;">
+                                            {{-- <div class="col-lg-8 form-group" style="margin-top: 6px;">
                                             <label for="date" class="form-label"> <label for="jumlah"
                                                     class="form-label">
                                                     <h4 class="no-m m-b-sm">Date</h4>
@@ -503,46 +506,46 @@
 
 
 
-                                        <div class="custom-file ms-5 pt-0 mt-0" style="margin-top: 6px;">
-                                            <label class="custom-file-label" for="inputGroupFile02"></label>
-                                            <img class="img img-fluid mt-5 mb-5" id="img-preview">
-                                            {{-- <br><br><br><br><br><br><br><br><br><br> --}}
-                                            <input type="file" class="mt-5" id="image_new" name="image_new"
-                                                onchange="previewImage()">
-                                            @error('image')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                            @enderror
-                                        </div>
-                                        {{-- </div> --}}
+                                            <div class="custom-file ms-5 pt-0 mt-0" style="margin-top: 6px;">
+                                                <label class="custom-file-label" for="inputGroupFile02"></label>
+                                                <img class="img img-fluid mt-5 mb-5" id="img-preview">
+                                                {{-- <br><br><br><br><br><br><br><br><br><br> --}}
+                                                <input type="file" class="mt-5" id="image_new" name="image_new"
+                                                    onchange="previewImage()">
+                                                @error('image')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                            {{-- </div> --}}
 
-                                        {{-- </div>
+                                            {{-- </div>
                                         </div> --}}
-                                        {{-- </div> --}}
-                                        {{-- </div> --}}
-                                    </div>
-                                    <div class="modal-footer float-left">
-                                        <button type="button" class="btn btn-default"
-                                            data-dismiss="modal">Close</button>
-                                        <button type="submit" class="btn btn-info">Save
-                                        </button>
-                                    </div>
-                                </form>
+                                            {{-- </div> --}}
+                                            {{-- </div> --}}
+                                        </div>
+                                        <div class="modal-footer float-left">
+                                            <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">Close</button>
+                                            <button type="submit" class="btn btn-info">Save
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
+                            @endif
                         </div>
-                        @endif
                     </div>
+                    </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                    </table>
                 </div>
-                </td>
-                </tr>
-                @endforeach
-                </tbody>
-                </table>
             </div>
         </div>
-    </div>
-    </form>
+        </form>
     </div>
     </div>
     </div>
@@ -567,3 +570,22 @@
         }
     </script> --}}
 @endsection
+
+{{-- <script>
+    var today = new Date();
+    var day = String(today.getDate()).padStart(2, '0');
+    var month = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var year = today.getFullYear();
+
+    var dateString = year + '-' + month + '-' + day;
+    document.getElementById('kembali').setAttribute('value', dateString);
+</script> --}}
+
+{{-- <script>
+    $(document).ready(function() {
+        $('#kembali').datepicker({
+            minDate: new Date(), // Set minimum date to today
+            // Other datepicker options
+        });
+    });
+</script> --}}
