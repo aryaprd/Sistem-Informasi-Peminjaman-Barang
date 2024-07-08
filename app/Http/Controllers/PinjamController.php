@@ -53,11 +53,17 @@ class PinjamController extends Controller
 
             $tgl_kembali = new DateTime($pinjam->tgl_kembali);
             $tgl_kembali_real = new DateTime($request->datee);
+            $pinjam->qty_barang -= $request->qty_barangg;
 
-            if ($tgl_kembali_real > $tgl_kembali) {
+
+            if ($tgl_kembali_real >= $tgl_kembali || $request->qty_barangg < $pinjam->qty_barang) {
                 $pinjam->status = 'telat';
             } else {
-                $pinjam->status = 'selesai';
+                if ($request->qty_barangg < $pinjam->qty_barang) {
+                    $pinjam->status = 'selesai';
+                } else {
+                    $pinjam->status = 'diterima';
+                }
             }
 
             $pinjam->tgl_kembali_real =  \Carbon\Carbon::now(); //$request->datee;
@@ -77,11 +83,11 @@ class PinjamController extends Controller
                 $pinjam->image_new = $image_new;
             }
 
-            $barang->sisa > 0 ? $barang->sisa = $request->qty_barangg : $barang->sisa;
+            // $barang->sisa > 0 ? $barang->sisa = $request->qty_barangg : $barang->sisa;
             // $barang->sisa = $request->qty_barangg;
             // $pinjam->qty_barang = $request->qty_barangg;
             // $pinjam->qty_barang -= $request->qty_barangg;
-            // $barang->sisa += $request->qty_barangg;
+            $barang->sisa += $request->qty_barangg;
             // $barang->sisa += $pinjam->qty_barang;
 
 
